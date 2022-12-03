@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<h1>Edit Specs</h1>
+
+{% block content %}
+<form action="{% url 'edit' pk=sale.id %}" method="POST">
+    {% csrf_token %}
+    {{ form.management_form }}
+    <ul>
+        {% for spec in form %}
+        <hr>
+        <li>{{ spec.as_p }}</li>
+        {{ spec.nested.management_form }}
+    </ul>
+    <hr>
+    <hr>
+    <ol>
+        {% for engine in spec.nested %}
+        <li>
+            <div style="margin-left: 30px">{{ engine.as_p }}</div>
+        </li>
+        {% endfor %}
+    </ol>
+
+    {% endfor %}
+
+    <input type="submit" value="Save" />
+
+</form>
+{% endblock content %}

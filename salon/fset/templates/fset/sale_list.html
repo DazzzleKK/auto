@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<ol>
+    
+    {% for sale in sale_list %}
+        <li><a href="{% url 'edit' pk=sale.id%}">{{ sale }}</a></li>
+    {% endfor %}
+        
+</ol>
+{% endblock content %}
+    
